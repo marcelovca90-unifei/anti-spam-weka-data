@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PARENTS=(tSNE_UNIFEI_2017 tSNE_UNIFEI_2018)
+PARENTS=(UNIFEI_2017 UNIFEI_2018)
 FOLDERS=(CHI2 FD MI)
 SUBFOLDERS=(8 16 32 64 128 256 512 1024)
 
@@ -43,13 +43,13 @@ do
     do
         for SUBFOLDER in "${SUBFOLDERS[@]}"
         do
-            inputHam="./$PARENT/$FOLDER/$SUBFOLDER/ham.data"
-            inputSpam="./$PARENT/$FOLDER/$SUBFOLDER/spam.data"
-            inputDuped="./$PARENT/$FOLDER/$SUBFOLDER/duped.data"
-            output="./$PARENT/UNIFEI_2017-$FOLDER-$SUBFOLDER.png"
+            inputHam="./tSNE_$PARENT/$FOLDER/$SUBFOLDER/ham.data"
+            inputSpam="./tSNE_$PARENT/$FOLDER/$SUBFOLDER/spam.data"
+            inputDuped="./tSNE_$PARENT/$FOLDER/$SUBFOLDER/duped.data"
+            output="./tSNE_$PARENT/$PARENT-$FOLDER-$SUBFOLDER.png"
             gnuplot -e " \
             set term postscript eps color fontfile './sfss1200.pfb' 'SFRM1200'; \
-            set tics font 'SFRM1200,16'; \
+            set tics font 'SFRM1200,20'; \
             set key font 'SFRM1200,20'; \
             set terminal png size $R1080P; \
             set output '$output'; \
